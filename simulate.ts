@@ -35,15 +35,14 @@ export function simulateRobotMove(
   move: Move,
   worldSize: Size
 ): RobotOutput {
-  if (move === "F") {
-    return moveRobotForward(position, worldSize);
-  } else if (move === "L") {
-    return rotateRobotLeft(position);
-  } else if (move === "R") {
-    return rotateRobotRight(position);
+  switch (move) {
+    case "F":
+      return moveRobotForward(position, worldSize);
+    case "L":
+      return rotateRobotLeft(position);
+    case "R":
+      return rotateRobotRight(position);
   }
-
-  return { position, isLost: false };
 }
 
 export function moveRobotForward(
