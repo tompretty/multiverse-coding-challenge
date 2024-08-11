@@ -5,5 +5,11 @@
 To run the code, run:
 
 ```sh
-deno run main.ts
+deno run --allow-read main.ts
+```
+
+To run the tests, run:
+
+```sh
+deno test
 ```
