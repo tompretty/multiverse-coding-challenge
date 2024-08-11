@@ -7,7 +7,7 @@ export function printSummary(worldOutput: WorldOutput) {
 // ---- Helpers ---- //
 
 function printRobotSummary(robot: RobotOutput) {
-  let summary = `(${robot.position.x}, ${robot.position.y} ${robot.position.direction})`;
+  let summary = `(${robot.position.x}, ${robot.position.y}, ${robot.position.direction})`;
 
   if (robot.isLost) {
     summary += " LOST";
