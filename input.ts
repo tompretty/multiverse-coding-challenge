@@ -1,7 +1,7 @@
 import { Direction, Move, RobotInput, Size, WorldInput } from "./world.ts";
 
-export async function readInput(): Promise<WorldInput> {
-  const lines = await readFileContents();
+export async function readInput(inputFilePath: string): Promise<WorldInput> {
+  const lines = await readFileContents(inputFilePath);
   const size = parseSizeLine(lines[0]);
   const robots = parseRobotLines(lines.slice(1));
 
@@ -10,8 +10,8 @@ export async function readInput(): Promise<WorldInput> {
 
 // ---- Helpers ---- //
 
-async function readFileContents(): Promise<string[]> {
-  const contents = await Deno.readTextFile(INPUT_FILE_PATH);
+async function readFileContents(inputFilePath: string): Promise<string[]> {
+  const contents = await Deno.readTextFile(inputFilePath);
   const lines = contents.split("\n");
 
   return lines;
@@ -45,7 +45,5 @@ export function parseRobotLine(line: string): RobotInput {
 }
 
 // ---- Constants ---- //
-
-const INPUT_FILE_PATH = "./problem.txt";
 
 const ROBOT_LINE_REGEX = /^\((\d+), (\d+), ([NESW])\) ([FLR]+)$/;
