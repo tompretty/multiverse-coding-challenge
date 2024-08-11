@@ -1,10 +1,11 @@
 import { readInput } from "./input.ts";
+import { simulateWorld } from "./simulate.ts";
 
 async function run() {
-  await readInput();
-  // const state = readInput();
-  // const finalState = simulateWorld(state)
-  // printSummary(finalState);
+  const worldInput = await readInput();
+  const worldOutput = simulateWorld(worldInput);
+
+  console.log({ worldOutput });
 }
 
 run();

@@ -1,6 +1,6 @@
-export interface WorldState {
+export interface WorldInput {
   size: Size;
-  robots: RobotState[];
+  robots: RobotInput[];
 }
 
 export interface Size {
@@ -8,9 +8,24 @@ export interface Size {
   height: number;
 }
 
-export interface RobotState {
-  position: { x: number; y: number; direction: Direction };
+export interface RobotInput {
+  position: Position;
   moves: Move[];
+}
+
+export interface WorldOutput {
+  robots: RobotOutput[];
+}
+
+export interface RobotOutput {
+  position: Position;
+  isLost: boolean;
+}
+
+export interface Position {
+  x: number;
+  y: number;
+  direction: Direction;
 }
 
 export type Direction = "N" | "E" | "S" | "W";

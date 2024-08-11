@@ -1,6 +1,6 @@
-import { Direction, Move, RobotState, Size, WorldState } from "./world.ts";
+import { Direction, Move, RobotInput, Size, WorldInput } from "./world.ts";
 
-export async function readInput(): Promise<WorldState> {
+export async function readInput(): Promise<WorldInput> {
   const lines = await readFileContents();
   const size = parseSizeLine(lines[0]);
   const robots = parseRobotLines(lines.slice(1));
@@ -23,13 +23,13 @@ export function parseSizeLine(line: string): Size {
   return { width, height };
 }
 
-export function parseRobotLines(lines: string[]): RobotState[] {
+export function parseRobotLines(lines: string[]): RobotInput[] {
   const robots = lines.map((l) => parseRobotLine(l));
 
   return robots;
 }
 
-export function parseRobotLine(line: string): RobotState {
+export function parseRobotLine(line: string): RobotInput {
   const match = ROBOT_LINE_REGEX.exec(line);
 
   if (!match) {
